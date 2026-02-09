@@ -1,11 +1,40 @@
-<div align="center">
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# Production-Ready Developer Portfolio
 
-  <h1>Built with AI Studio</h2>
+A high-performance landing page built with React, TypeScript, and Tailwind CSS.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Features
+- **Modern UI**: Glassmorphism, dark theme, and high-fidelity typography.
+- **Animations**: Framer Motion for scroll-triggered and stagger effects.
+- **Performance**: Optimized asset loading and minimized layout shifts.
+- **Responsive**: Mobile-first design approach.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Tech Stack
+- Framework: Vite / React 18
+- Styling: Tailwind CSS v3.4
+- Icons: Lucide React
+- Animation: Framer Motion
 
-</div>
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## Docker Deployment
+
+To run in a containerized environment:
+```bash
+docker-compose up -d --build
+```
