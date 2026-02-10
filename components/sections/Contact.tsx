@@ -27,10 +27,12 @@ const Contact: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-            <Button variant="gradient" size="lg" className="w-full sm:w-auto">
-              <Mail className="w-5 h-5" />
-              Send an Email
-            </Button>
+            <a href="mailto:vmmoreno1999@gmail.com" className="w-full sm:w-auto">
+              <Button variant="gradient" size="lg" className="w-full">
+                <Mail className="w-5 h-5" />
+                Send an Email
+              </Button>
+            </a>
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
               <MessageSquare className="w-5 h-5" />
               Book a Call
@@ -38,9 +40,9 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-center gap-8">
-            <SocialLink href="#" icon={<Github />} label="GitHub" />
-            <SocialLink href="#" icon={<Linkedin />} label="LinkedIn" />
-            <SocialLink href="#" icon={<Twitter />} label="Twitter" />
+            <SocialLink href="https://github.com/Bitxogm" icon={<Github />} label="GitHub" />
+            <SocialLink href="https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/" icon={<Linkedin />} label="LinkedIn" />
+            <SocialLink href="mailto:vmmoreno1999@gmail.com" icon={<Mail />} label="Email" />
           </div>
         </motion.div>
       </div>
@@ -51,11 +53,14 @@ const Contact: React.FC = () => {
 const SocialLink: React.FC<{ href: string, icon: React.ReactNode, label: string }> = ({ href, icon, label }) => (
   <a 
     href={href} 
+    target="_blank"
+    rel="noopener noreferrer"
     aria-label={label}
     className="group flex flex-col items-center gap-2 text-slate-500 hover:text-white transition-all duration-300"
   >
     <div className="p-3 glass rounded-2xl group-hover:border-purple-500/50 group-hover:scale-110 transition-all">
-      {React.cloneElement(icon as React.ReactElement, { className: "w-6 h-6" })}
+      {/* Fixed cloneElement error by casting icon to ReactElement<any> to allow injecting className */}
+      {React.cloneElement(icon as React.ReactElement<any>, { className: "w-6 h-6" })}
     </div>
     <span className="text-xs font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
       {label}
