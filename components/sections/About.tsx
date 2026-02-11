@@ -9,7 +9,7 @@ const About: React.FC = () => {
 
   // Cambiado a ruta local. 
   // IMPORTANTE: Guarda tu foto como 'profile.png' en la carpeta raíz del proyecto.
-  const profileImageUrl = "./profile.png";
+  const profileImageUrl = "/profile.png";
 
   return (
     <section className="py-24 px-4 bg-slate-950 relative overflow-hidden">
