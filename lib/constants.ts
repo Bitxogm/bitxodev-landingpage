@@ -54,12 +54,21 @@ export const mobileProjects = [
 
 export const archiveProjects = [
   {
+    id: 'devstart',
+    year: '2024',
+    name: 'DevStart Resources',
+    type: 'Web',
+    description: 'Un hub masivo de recursos para desarrolladores. Centraliza herramientas de diseño, frameworks, documentación y utilidades esenciales para el ecosistema web moderno.',
+    tech: ['React', 'Astro', 'Curated Content', 'Tailwind'],
+    url: 'https://devstart.bitxodev.com/',
+  },
+  {
     id: 'master-portfolio',
     year: '2024',
     name: 'Master Portfolio',
     type: 'Web',
-    description: 'Este mismo portfolio: una arquitectura limpia de componentes con diseño ultra-moderno y optimización de rendimiento.',
-    tech: ['React', 'Framer Motion', 'Vite', 'Tailwind'],
+    description: 'Portfolio profesional diseñado con un enfoque en el rendimiento y la estética minimalista. Implementa arquitecturas de componentes limpios y animaciones de alta fidelidad.',
+    tech: ['React', 'Framer Motion', 'Vite', 'Lucide'],
     url: 'https://portfolio.bitxodev.com/',
   },
   {
