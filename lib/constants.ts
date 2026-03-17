@@ -117,3 +117,51 @@ export const skillCategories = [
     skills: ["Gemini API", "OpenAI", "LangChain", "Vector DBs", "PyTorch"]
   }
 ];
+
+export const certificates = [
+  {
+    id: 'fullstack-bootcamp',
+    title: 'Full-Stack Web Development',
+    issuer: 'KeepCoding',
+    date: '2024',
+    url: '/certificates/fullstack.pdf', // Aquí pondrás tu PDF
+    image: 'https://picsum.photos/seed/cert1/400/300', // Opcional: miniatura
+  },
+  {
+    id: 'ai-specialization',
+    title: 'AI & Machine Learning Specialization',
+    issuer: 'DeepLearning.AI',
+    date: '2024',
+    url: '/certificates/ai.pdf',
+    image: 'https://picsum.photos/seed/cert2/400/300',
+  },
+  {
+    id: 'cloud-computing',
+    title: 'Cloud Architecture (AWS)',
+    issuer: 'Amazon Web Services',
+    date: '2023',
+    url: '/certificates/aws.pdf',
+    image: 'https://picsum.photos/seed/cert3/400/300',
+  }
+];
+
+export const bootcampPractices = [
+  {
+    name: 'Fundamentos de Programación',
+    description: 'Lógica pura, algoritmos y estructuras de datos básicas.',
+    tech: ['JavaScript', 'Logic'],
+    github: '#'
+  },
+  {
+    name: 'Frontend Avanzado',
+    description: 'Single Page Applications con gestión de estado compleja.',
+    tech: ['React', 'Redux'],
+    github: '#'
+  },
+  {
+    name: 'Backend & APIs',
+    description: 'Diseño de microservicios y despliegue en contenedores.',
+    tech: ['Node.js', 'Docker'],
+    github: '#'
+  }
+];

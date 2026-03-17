@@ -1,0 +1,3 @@
+# Esta carpeta contendrá tus certificados en formato PDF.
+# Simplemente arrastra tus archivos .pdf aquí.
+# Asegúrate de que los nombres coincidan con los de lib/constants.ts

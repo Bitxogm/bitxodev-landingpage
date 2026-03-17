@@ -4,6 +4,7 @@ import Navbar from './components/ui/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Projects from './components/sections/Projects';
+import Certificates from './components/sections/Certificates';
 import Experience from './components/sections/Experience';
 import Skills from './components/sections/Skills';
 import Contact from './components/sections/Contact';
@@ -19,6 +20,9 @@ const App: React.FC = () => {
         </section>
         <section id="projects">
           <Projects />
+        </section>
+        <section id="certificates">
+          <Certificates />
         </section>
         <section id="experience">
           <Experience />
