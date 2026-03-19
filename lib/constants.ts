@@ -7,7 +7,7 @@ export const featuredProjects = [
     description: 'Plataforma interactiva de aprendizaje de programación con asistencia de IA y ejercicios de lógica gamificados.',
     tech: ['React', 'Node.js', 'MongoDB', 'Gemini AI'],
     url: 'https://agentlogic.bitxodev.com/',
-    gradient: 'from-purple-500 to-blue-500',
+    gradient: 'from-blue-500 to-cyan-500',
   },
   {
     id: 'codeai',
@@ -16,7 +16,7 @@ export const featuredProjects = [
     description: 'Herramienta avanzada de refactorización y traducción de código. Incluye análisis profundo, generación de tests unitarios y modularización inteligente mediante Gemini AI.',
     tech: ['Next.js', 'TypeScript', 'Gemini AI', 'Tailwind'],
     url: 'https://codeai.bitxodev.com/',
-    gradient: 'from-blue-600 to-cyan-500',
+    gradient: 'from-blue-600 to-indigo-500',
   },
   {
     id: 'cvgenerator',
@@ -84,37 +84,33 @@ export const archiveProjects = [
 
 export const experiences = [
   {
-    company: "BitxoDev Studio",
-    role: "Senior Full-Stack Developer",
-    period: "2023 - Presente",
-    description: "Liderando el desarrollo de soluciones basadas en IA y arquitecturas distribuidas de alto rendimiento.",
-    skills: ["Architecture", "System Design", "Team Leadership"]
+    company: "Full-Stack Web Bootcamp",
+    role: "Estudiante de Desarrollo Web",
+    period: "Mayo 2025 - Marzo 2026",
+    description: "Formación intensiva en desarrollo moderno. Especialización en el stack MERN (MongoDB, Express, React, Node.js), arquitectura de software y buenas prácticas de desarrollo.",
+    skills: ["Full-Stack Development", "Teamwork", "Agile"]
   },
   {
-    company: "Tech Solutions Inc.",
-    role: "Full-Stack Developer",
-    period: "2021 - 2023",
-    description: "Desarrollo de aplicaciones web escalables y optimización de bases de datos para clientes internacionales.",
-    skills: ["React", "PostgreSQL", "AWS"]
+    company: "Formación Autodidacta",
+    role: "Aspirante a Desarrollador",
+    period: "2023 - 2025",
+    description: "Aprendizaje independiente a través de plataformas como Udemy, freeCodeCamp y YouTube. Construcción de proyectos personales para consolidar fundamentos de JavaScript, HTML y CSS.",
+    skills: ["Self-learning", "Problem Solving", "Web Fundamentals"]
   }
 ];
 
 export const skillCategories = [
   {
     title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js"]
+    skills: ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React", "Next.js", "Tailwind CSS"]
   },
   {
     title: "Backend",
-    skills: ["Node.js", "Python", "Go", "PostgreSQL", "Redis", "GraphQL"]
+    skills: ["Node.js", "Express", "MongoDB", "SQL", "PostgreSQL", "Prisma", "REST APIs"]
   },
   {
-    title: "DevOps & Tools",
-    skills: ["Docker", "Kubernetes", "AWS", "CI/CD", "Git", "Linux"]
-  },
-  {
-    title: "AI & Data",
-    skills: ["Gemini API", "OpenAI", "LangChain", "Vector DBs", "PyTorch"]
+    title: "Herramientas",
+    skills: ["Git", "GitHub", "Vite", "AWS", "Postman", "Linux Terminal"]
   }
 ];
 
@@ -147,21 +143,27 @@ export const certificates = [
 
 export const bootcampPractices = [
   {
-    name: 'Fundamentos de Programación',
-    description: 'Lógica pura, algoritmos y estructuras de datos básicas.',
-    tech: ['JavaScript', 'Logic'],
+    name: 'Proyecto Next.js',
+    description: 'Aplicación web moderna utilizando el App Router de Next.js, optimización de imágenes y Server Components.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind'],
     github: '#'
   },
   {
-    name: 'Frontend Avanzado',
-    description: 'Single Page Applications con gestión de estado compleja.',
-    tech: ['React', 'Redux'],
+    name: 'Proyecto React',
+    description: 'Desarrollo de una SPA interactiva con gestión de estado global y hooks personalizados.',
+    tech: ['React', 'Vite', 'CSS Modules'],
     github: '#'
   },
   {
-    name: 'Backend & APIs',
-    description: 'Diseño de microservicios y despliegue en contenedores.',
-    tech: ['Node.js', 'Docker'],
+    name: 'Proyecto Node.js',
+    description: 'API REST robusta con autenticación JWT, validación de datos y conexión a base de datos.',
+    tech: ['Node.js', 'Express', 'MongoDB'],
+    github: '#'
+  },
+  {
+    name: 'Proyecto Final (En curso)',
+    description: 'Desarrollo integral de una solución full-stack aplicando todos los conocimientos del bootcamp.',
+    tech: ['Full Stack', 'IA', 'AWS'],
     github: '#'
   }
 ];

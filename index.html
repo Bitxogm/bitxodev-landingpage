@@ -47,13 +47,46 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
+        :root {
+            --bg: #020617;
+            --text: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        .light {
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --glass-bg: rgba(15, 23, 42, 0.03);
+            --glass-border: rgba(15, 23, 42, 0.08);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #020617;
-            color: white;
+            background-color: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
             margin: 0;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            height: 100%;
+        }
+
+        /* Snap Scroll */
+        html { 
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            scroll-padding-top: 80px; /* Account for fixed Navbar */
+            height: 100%;
+        }
+
+        section {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         body::before {
@@ -70,10 +103,10 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass-bg);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
         }
 
         .text-gradient {
@@ -88,11 +121,9 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #334155; }
-
-        html { scroll-behavior: smooth; }
     </style>
     <script type="importmap">
 {

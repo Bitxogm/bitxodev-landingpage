@@ -6,23 +6,23 @@ import Button from '../ui/Button';
 
 const Contact: React.FC = () => {
   return (
-    <section className="py-24 px-4 bg-slate-950 overflow-hidden">
+    <section id="contact" className="py-24 px-4 relative overflow-hidden">
       <div className="container max-w-4xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="glass rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden"
+          className="glass rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden border-slate-200 dark:border-white/5"
         >
           {/* Subtle background glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-purple-600/10 blur-[100px] pointer-events-none" />
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
             Ready to build <br />
             <span className="text-gradient">something epic?</span>
           </h2>
           
-          <p className="text-slate-400 text-lg md:text-xl max-w-xl mx-auto mb-10">
+          <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-xl mx-auto mb-10">
             Currently accepting freelance projects and interesting full-time opportunities.
           </p>
 
@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
                 Send an Email
               </Button>
             </a>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto border-slate-200 dark:border-white/10 text-slate-900 dark:text-white">
               <MessageSquare className="w-5 h-5" />
               Book a Call
             </Button>
@@ -46,6 +46,11 @@ const Contact: React.FC = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Footer inside the section to avoid snap issues */}
+      <footer className="absolute bottom-8 left-0 right-0 text-center text-slate-500 text-xs opacity-50">
+        <p>© {new Date().getFullYear()} BitxoDev. Crafted with precision.</p>
+      </footer>
     </section>
   );
 };

@@ -6,10 +6,10 @@ import Badge from '../ui/Badge';
 
 const Skills: React.FC = () => {
   return (
-    <section className="py-24 px-4 bg-slate-950 relative">
+    <section id="skills" className="py-24 px-4 relative overflow-hidden">
       <div className="container max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">Technical Arsenal</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white">Technical Arsenal</h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto rounded-full" />
         </div>
 
@@ -23,8 +23,8 @@ const Skills: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <h3 className="text-xl font-bold text-slate-100 flex items-center gap-3">
-                <span className="w-8 h-px bg-white/20" />
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-3">
+                <span className="w-8 h-px bg-slate-200 dark:bg-white/20" />
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                   >
-                    <Badge variant="outline" className="px-5 py-2 text-sm hover:border-purple-500/50 hover:bg-purple-500/5 cursor-default">
+                    <Badge variant="outline" className="px-5 py-2 text-sm border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:border-purple-500/50 hover:bg-purple-500/5 cursor-default">
                       {skill}
                     </Badge>
                   </motion.div>

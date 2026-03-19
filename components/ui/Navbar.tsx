@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +20,6 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: 'Sobre mí', href: '#about' },
     { name: 'Proyectos', href: '#projects' },
-    { name: 'Certificados', href: '#certificates' },
     { name: 'Experiencia', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contacto', href: '#contact' },
@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
     )}>
       <div className={cn(
         "max-w-6xl mx-auto glass rounded-2xl p-3 px-6 flex items-center justify-between transition-all duration-300",
-        isScrolled ? "bg-slate-950/80 shadow-2xl shadow-purple-500/10 border-white/10" : "bg-transparent border-transparent"
+        isScrolled ? "bg-slate-950/80 dark:bg-slate-950/80 light:bg-white/80 shadow-2xl shadow-purple-500/10 border-white/10" : "bg-transparent border-transparent"
       )}>
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
@@ -48,20 +48,23 @@ const Navbar: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+              className="text-sm font-medium text-slate-400 hover:text-purple-500 transition-colors"
             >
               {link.name}
             </a>
           ))}
           <div className="h-4 w-px bg-white/10 mx-2" />
-          <a 
-            href="https://github.com/Bitxogm" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="p-2 glass rounded-full hover:bg-white hover:text-slate-950 transition-all"
-          >
-            <Github className="w-5 h-5" />
-          </a>
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
+            <a 
+              href="https://github.com/Bitxogm" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 glass rounded-full hover:bg-purple-500 hover:text-white transition-all"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
