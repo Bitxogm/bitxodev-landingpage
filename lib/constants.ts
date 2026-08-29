@@ -143,27 +143,30 @@ export const certificates = [
 
 export const bootcampPractices = [
   {
+    name: 'Luxe Estate',
+    description: 'Frontend inmobiliario para exploración y gestión de propiedades de lujo, con fichas detalladas y navegación fluida.',
+    tech: ['React', 'TypeScript', 'Tailwind'],
+    github: 'https://github.com/Bitxogm/luxe-estate',
+    demo: 'https://luxe-estate-frontend-tau.vercel.app'
+  },
+  {
+    name: 'Beatforge',
+    description: 'Estudio de producción musical electrónica (house/disco) directamente en el navegador.',
+    tech: ['Next.js', 'Express', 'Prisma', 'Tone.js'],
+    github: 'https://github.com/Bitxogm/DJ_Studio',
+    badge: 'En desarrollo'
+  },
+  {
+    name: 'CTF Writeups',
+    description: 'Documentación estructurada de labs y writeups de ciberseguridad ofensiva y CTF.',
+    tech: ['Ciberseguridad', 'CTF', 'Pentesting'],
+    github: 'https://github.com/Bitxogm/CTF-Writeups'
+  },
+  {
     name: 'Proyecto Next.js',
-    description: 'Aplicación web moderna utilizando el App Router de Next.js, optimización de imágenes y Server Components.',
-    tech: ['Next.js', 'TypeScript', 'Tailwind'],
-    github: '#'
-  },
-  {
-    name: 'Proyecto React',
-    description: 'Desarrollo de una SPA interactiva con gestión de estado global y hooks personalizados.',
-    tech: ['React', 'Vite', 'CSS Modules'],
-    github: '#'
-  },
-  {
-    name: 'Proyecto Node.js',
-    description: 'API REST robusta con autenticación JWT, validación de datos y conexión a base de datos.',
-    tech: ['Node.js', 'Express', 'MongoDB'],
-    github: '#'
-  },
-  {
-    name: 'Proyecto Final (En curso)',
-    description: 'Desarrollo integral de una solución full-stack aplicando todos los conocimientos del bootcamp.',
-    tech: ['Full Stack', 'IA', 'AWS'],
-    github: '#'
+    description: 'Marketplace de anuncios de compraventa con listado, filtrado y gestión, usando App Router y base de datos PostgreSQL vía Supabase.',
+    tech: ['Next.js', 'Prisma', 'PostgreSQL', 'Shadcn/ui'],
+    github: 'https://github.com/Bitxogm/react-avanzado-practica',
+    demo: 'https://nextjs.bitxodev.com/'
   }
 ];

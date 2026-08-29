@@ -42,7 +42,7 @@ const Projects: React.FC = () => {
         {/* Bootcamp Projects Section */}
         <section id="bootcamp-projects" className="min-h-screen py-32 flex flex-col justify-center">
           <div className="flex items-center gap-4 mb-12">
-            <h4 className="text-sm font-bold uppercase tracking-[0.3em] text-emerald-500">Bootcamp Projects</h4>
+            <h4 className="text-sm font-bold uppercase tracking-[0.3em] text-emerald-500">Proyectos Destacados</h4>
             <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/20 to-transparent" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -235,12 +235,26 @@ const BootcampCard: React.FC<{ practice: any, index: number }> = ({ practice, in
       <div className="w-10 h-10 glass rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
         <Code2 className="w-5 h-5" />
       </div>
-      <a href={practice.github} target="_blank" className="text-slate-400 hover:text-emerald-600 dark:hover:text-white transition-colors">
-        <Github className="w-4 h-4" />
-      </a>
+      <div className="flex items-center gap-3">
+        {practice.demo && (
+          <a href={practice.demo} target="_blank" className="text-slate-400 hover:text-emerald-600 dark:hover:text-white transition-colors">
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        )}
+        <a href={practice.github} target="_blank" className="text-slate-400 hover:text-emerald-600 dark:hover:text-white transition-colors">
+          <Github className="w-4 h-4" />
+        </a>
+      </div>
     </div>
 
-    <h4 className="font-bold text-lg mb-2 text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{practice.name}</h4>
+    <div className="flex items-center gap-2 mb-2">
+      <h4 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{practice.name}</h4>
+      {practice.badge && (
+        <span className="text-[9px] font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+          {practice.badge}
+        </span>
+      )}
+    </div>
     <p className="text-xs text-slate-600 dark:text-slate-500 mb-6 font-light leading-relaxed">{practice.description}</p>
     
     <div className="mt-auto flex flex-wrap gap-2">
