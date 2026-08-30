@@ -1,15 +1,13 @@
-version: '3.8'
-
 services:
   portfolio:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: bitxodev-portfolio
-    ports:
-      - "80:80"
     restart: always
-    # Si usas Traefik en Hetzner, descomenta estas líneas:
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.portfolio.rule=Host(`tu-dominio.com`)"
+    networks:
+      - nginx-proxy_default
+
+networks:
+  nginx-proxy_default:
+    external: true
