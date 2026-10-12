@@ -4,60 +4,81 @@ import { motion } from 'framer-motion';
 import { experiences } from '../../lib/constants';
 import { Briefcase } from 'lucide-react';
 
-const Experience: React.FC = () => {
-  return (
-    <section id="experience" className="py-24 px-4 relative overflow-hidden">
-      <div className="container max-w-5xl mx-auto">
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-slate-900 dark:text-white">Mi <span className="text-purple-500">Trayectoria.</span></h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-xl">Experiencia profesional construyendo productos digitales de principio a fin.</p>
-        </div>
+const Experience: React.FC = () => (
+  <section id="experience" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '80px 16px', position: 'relative', overflow: 'hidden' }}>
+    <div className="orb" style={{ width: 400, height: 400, top: '20%', right: '0%', background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)' }} />
 
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-blue-500/50 to-transparent -translate-x-1/2 hidden md:block" />
+    <div style={{ maxWidth: 860, margin: '0 auto', width: '100%' }}>
+      {/* Header */}
+      <div style={{ marginBottom: 72 }}>
+        <p className="sec-label" style={{ marginBottom: 16 }}>Carrera profesional</p>
+        <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 'clamp(2.8rem, 7vw, 5rem)', letterSpacing: '-0.03em', color: '#f1f5f9', lineHeight: 1 }}>
+          Mi <span className="grad-text">Trayectoria.</span>
+        </h2>
+        <p style={{ color: '#475569', marginTop: 20, maxWidth: 480, lineHeight: 1.7, fontWeight: 300 }}>
+          Experiencia profesional construyendo productos digitales de principio a fin.
+        </p>
+      </div>
 
-          <div className="space-y-12">
-            {experiences.map((exp, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={`relative flex flex-col md:flex-row gap-8 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+      {/* Timeline */}
+      <div style={{ position: 'relative', paddingLeft: 48 }}>
+        <div className="tl-line" />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+          {experiences.map((exp, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.15, duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+              style={{ position: 'relative' }}
+            >
+              {/* Dot */}
+              <div className={`tl-dot ${idx === 0 ? 'active' : ''}`} style={{ position: 'absolute', left: -36, top: 28 }} />
+
+              {/* Card */}
+              <motion.div
+                whileHover={{ x: 6 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                className="exp-card"
               >
-                {/* Dot */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-white dark:bg-slate-950 border-2 border-purple-500 rounded-full -translate-x-1/2 mt-1.5 z-10 hidden md:block shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+                {/* Top bar accent */}
+                {idx === 0 && (
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #6366f1, #d946ef)', borderRadius: '24px 24px 0 0' }} />
+                )}
 
-                <div className="flex-1 md:w-1/2">
-                  <div className={`glass p-8 rounded-3xl border-slate-200 dark:border-white/5 hover:border-purple-500/30 transition-colors group ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                    <div className={`flex items-center gap-3 mb-4 ${idx % 2 === 0 ? 'justify-start' : 'md:justify-end'}`}>
-                      <Briefcase className="w-5 h-5 text-purple-400" />
-                      <span className="text-xs font-bold text-purple-400 uppercase tracking-widest">{exp.period}</span>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-1 text-slate-900 dark:text-white group-hover:text-purple-500 transition-colors">{exp.role}</h3>
-                    <h4 className="text-slate-500 dark:text-slate-400 font-medium mb-4">{exp.company}</h4>
-                    <p className="text-slate-600 dark:text-slate-500 text-sm leading-relaxed mb-6">
-                      {exp.description}
-                    </p>
-                    <div className={`flex flex-wrap gap-2 ${idx % 2 === 0 ? 'justify-start' : 'md:justify-end'}`}>
-                      {exp.skills.map(skill => (
-                        <span key={skill} className="text-[10px] px-2 py-1 bg-slate-100 dark:bg-white/5 rounded-md border border-slate-200 dark:border-white/10 text-slate-500 dark:text-slate-400">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', padding: '5px 14px', borderRadius: 99 }}>
+                    <Briefcase size={12} color="#818cf8" />
+                    <span style={{ fontFamily: 'Outfit', fontSize: '0.65rem', fontWeight: 700, color: '#818cf8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{exp.period}</span>
                   </div>
+                  {idx === 0 && (
+                    <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontFamily: 'Outfit', fontWeight: 700, color: '#4ade80', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', animation: 'pulse 2s infinite' }} />
+                      Más reciente
+                    </span>
+                  )}
                 </div>
-                <div className="flex-1 hidden md:block" />
+
+                <h3 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.5rem', color: '#f1f5f9', marginBottom: 4 }}>{exp.role}</h3>
+                <p style={{ color: '#6366f1', fontWeight: 600, fontSize: '0.875rem', marginBottom: 16 }}>{exp.company}</p>
+                <p style={{ color: '#475569', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: 24 }}>{exp.description}</p>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {exp.skills.map(s => (
+                    <span key={s} style={{ padding: '5px 14px', borderRadius: 99, fontSize: '0.7rem', fontFamily: 'Outfit', fontWeight: 700, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', color: '#a5b4fc' }}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Experience;

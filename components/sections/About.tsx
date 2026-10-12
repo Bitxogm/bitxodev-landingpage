@@ -1,121 +1,150 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldAlert, Cpu } from 'lucide-react';
+import { Cpu, BookOpen, Zap, Sparkles } from 'lucide-react';
 
 const About: React.FC = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
-  // Imagen de perfil actualizada
-  const profileImageUrl = "/profile.png";
+  const stats = [
+    { value: '3+',   label: 'Años aprendiendo', Icon: BookOpen, color: '#818cf8' },
+    { value: '10+',  label: 'Proyectos labs',   Icon: Zap,      color: '#f0abfc' },
+    { value: '100%', label: 'Curiosidad',        Icon: Sparkles, color: '#67e8f9' },
+  ];
 
   return (
-    <section id="about" className="py-24 px-4 relative overflow-hidden">
-      {/* Luces de fondo sutiles */}
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-purple-600/10 blur-[120px] pointer-events-none" />
-      
-      <div className="container max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section id="about" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '80px 16px', position: 'relative', overflow: 'hidden' }}>
+      {/* BG accent */}
+      <div className="orb" style={{ width: 500, height: 500, top: '20%', left: '-10%', background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)' }} />
+      <div className="orb" style={{ width: 400, height: 400, bottom: '10%', right: '5%', background: 'radial-gradient(circle, rgba(217,70,239,0.12) 0%, transparent 70%)' }} />
+
+      <div style={{ maxWidth: 1000, margin: '0 auto', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64, alignItems: 'center' }}>
+
+          {/* === IMAGE === */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: -20 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            {/* Marco Neón Cyberpunk */}
-            <div className="aspect-[3/4] glass rounded-[2.5rem] relative z-10 overflow-hidden group border-purple-500/20 shadow-2xl shadow-purple-500/5">
-               
-               {/* Estado de carga */}
-               {!imageLoaded && !imageError && (
-                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-900/80 space-y-6 p-8">
-                   <div className="relative">
-                      <motion.div 
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                        className="w-24 h-24 rounded-full border-2 border-dashed border-purple-500/30 flex items-center justify-center"
-                      />
-                      <Cpu className="w-10 h-10 text-purple-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                   </div>
-                 </div>
-               )}
-
-               {/* Imagen de Perfil */}
-               <img 
-                 src={profileImageUrl}
-                 alt="Victor Manuel Gonzalez" 
-                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                 onLoad={() => setImageLoaded(true)}
-                 onError={() => setImageError(true)}
-               />
-               
-               {/* Capas de Estilo */}
-               <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-950 via-transparent to-transparent opacity-60 pointer-events-none" />
-               <div className="absolute inset-0 opacity-[0.1] pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
-               
-               {/* Borde Decorativo */}
-               <div className="absolute inset-6 border border-slate-200 dark:border-white/5 rounded-[1.5rem] pointer-events-none group-hover:border-purple-500/20 transition-colors duration-500" />
-            </div>
-
-            {/* Brillos ambientales */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 blur-3xl rounded-full z-0 animate-pulse" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-blue-500/10 blur-3xl rounded-full z-0 animate-pulse" style={{ animationDelay: '1s' }} />
-          </motion.div>
-
-          {/* Contenido de Texto */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+            style={{ display: 'flex', justifyContent: 'center' }}
           >
-            <div className="space-y-2">
-              <h3 className="text-purple-500 font-black tracking-[0.3em] uppercase text-xs">Innovación & Automatización</h3>
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight text-slate-900 dark:text-white">
-                Victor Manuel <br />
-                <span className="text-gradient">Gonzalez.</span>
-              </h2>
+            <div className="aurora-wrap" style={{ borderRadius: '2.5rem', width: 320, maxWidth: '100%' }}>
+              <div style={{
+                aspectRatio: '3/4',
+                borderRadius: '2.5rem',
+                overflow: 'hidden',
+                background: '#0d0d1f',
+                position: 'relative',
+                boxShadow: '0 32px 80px rgba(0,0,0,0.6)',
+              }}>
+                {/* Loading spinner */}
+                {!loaded && !error && (
+                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#0d0d1f' }}>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 5, ease: 'linear' }}
+                      style={{ width: 80, height: 80, borderRadius: '50%', border: '2px dashed rgba(99,102,241,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    >
+                      <Cpu size={32} color="#6366f1" />
+                    </motion.div>
+                  </div>
+                )}
+
+                <img
+                  src="/profile.png"
+                  alt="Victor Manuel Gonzalez"
+                  onLoad={() => setLoaded(true)}
+                  onError={() => setError(true)}
+                  style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    objectFit: 'cover',
+                    opacity: loaded ? 1 : 0,
+                    transition: 'opacity 1s ease, transform 0.5s ease',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.04)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)'; }}
+                />
+
+                {/* Gradient overlay */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,5,15,0.85) 0%, transparent 50%)', pointerEvents: 'none' }} />
+
+                {/* Bottom badges */}
+                <div style={{ position: 'absolute', bottom: 20, left: 16, right: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.4)', color: '#a5b4fc', padding: '5px 14px', borderRadius: 99, fontSize: '0.65rem', fontFamily: 'Outfit', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                    Full-Stack · IA
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(74,222,128,0.12)', border: '1px solid rgba(74,222,128,0.3)', color: '#4ade80', padding: '5px 12px', borderRadius: 99, fontSize: '0.65rem', fontFamily: 'Outfit', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 6px #4ade80', animation: 'pulse 2s infinite' }} />
+                    Open to work
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* === TEXT === */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+          >
+            <p className="sec-label" style={{ marginBottom: 16 }}>Sobre mí</p>
+
+            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontSize: 'clamp(2.8rem, 6vw, 4.5rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 32, color: '#f1f5f9' }}>
+              Victor Manuel<br />
+              <span className="grad-text">Gonzalez.</span>
+            </h2>
+
+            <blockquote style={{ borderLeft: '3px solid #6366f1', paddingLeft: 20, marginBottom: 24, color: '#94a3b8', fontStyle: 'italic', fontSize: '1rem', lineHeight: 1.7 }}>
+              "Facilitando problemas reales mediante herramientas inteligentes."
+            </blockquote>
+
+            <p style={{ color: '#64748b', lineHeight: 1.8, marginBottom: 16, fontSize: '0.95rem', fontWeight: 300 }}>
+              Desarrollador Full-Stack apasionado por la <strong style={{ color: '#e2e8f0', fontWeight: 600 }}>Inteligencia Artificial</strong>. Mi enfoque se centra en crear soluciones que automaticen tareas tediosas, permitiendo a las personas enfocarse en lo que realmente importa.
+            </p>
+            <p style={{ color: '#64748b', lineHeight: 1.8, marginBottom: 40, fontSize: '0.95rem', fontWeight: 300 }}>
+              Desde mi etapa autodidacta hasta completar mi formación intensiva en el bootcamp, he evolucionado hacia un perfil capaz de construir desde interfaces intuitivas hasta despliegues eficientes en servidor.
+            </p>
+
+            {/* Philosophy grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 40, paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+              <div>
+                <p style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#818cf8', marginBottom: 6 }}>Filosofía</p>
+                <p style={{ color: '#475569', fontSize: '0.82rem', lineHeight: 1.6 }}>Si se puede automatizar, se debe automatizar.</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#818cf8', marginBottom: 6 }}>Enfoque</p>
+                <p style={{ color: '#475569', fontSize: '0.82rem', lineHeight: 1.6 }}>IA como motor de eficiencia y despliegues robustos.</p>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light italic border-l-2 border-purple-500/30 pl-6">
-                "Facilitando problemas reales mediante herramientas inteligentes."
-              </p>
-              
-              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light">
-                Desarrollador Full-Stack apasionado por la **Inteligencia Artificial**. Mi enfoque se centra en crear soluciones que automaticen tareas tediosas, permitiendo a las personas enfocarse en lo que realmente importa.
-              </p>
-              <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-light">
-                Desde mi etapa autodidacta hasta completar mi formación intensiva en el bootcamp, he evolucionado hacia un perfil capaz de construir desde interfaces intuitivas hasta despliegues eficientes en servidor.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 pt-6 border-t border-slate-200 dark:border-white/5">
-              <div className="space-y-2">
-                <h4 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Filosofía</h4>
-                <p className="text-slate-500 text-xs leading-relaxed">Si se puede automatizar, se debe automatizar.</p>
-              </div>
-              <div className="space-y-2">
-                <h4 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Enfoque</h4>
-                <p className="text-slate-500 text-xs leading-relaxed">IA como motor de eficiencia y despliegues robustos.</p>
-              </div>
-            </div>
-
-            <div className="pt-4 flex items-center gap-6">
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-slate-900 dark:text-white">3+</span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">Años Aprendiendo</span>
-              </div>
-              <div className="h-8 w-px bg-slate-200 dark:bg-white/10" />
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-slate-900 dark:text-white">10+</span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">Proyectos Labs</span>
-              </div>
-              <div className="h-8 w-px bg-slate-200 dark:bg-white/10" />
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-slate-900 dark:text-white">100%</span>
-                <span className="text-[10px] text-slate-500 uppercase tracking-widest">Curiosidad</span>
-              </div>
+            {/* Stats */}
+            <div style={{ display: 'flex', gap: 12 }}>
+              {stats.map(({ value, label, Icon, color }, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -4, scale: 1.04 }}
+                  style={{
+                    flex: 1,
+                    background: '#0d0d1f',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 20,
+                    padding: '20px 16px',
+                    textAlign: 'center',
+                    cursor: 'default',
+                    transition: 'border-color 0.2s, box-shadow 0.2s',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${color}44`; (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 30px ${color}22`; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}
+                >
+                  <Icon size={16} style={{ color, margin: '0 auto 8px' }} />
+                  <p style={{ fontFamily: 'Outfit', fontWeight: 900, fontSize: '1.5rem', color: '#f1f5f9', margin: '0 0 4px' }}>{value}</p>
+                  <p style={{ fontFamily: 'Outfit', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#334155' }}>{label}</p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
