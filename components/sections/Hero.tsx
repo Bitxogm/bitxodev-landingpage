@@ -1,118 +1,143 @@
 
 import React from 'react';
-// Added Variants type import to fix type inference issues with easing strings
 import { motion, Variants } from 'framer-motion';
-import { Github, Linkedin, Mail, Rocket, Code2 } from 'lucide-react';
-import Button from '../ui/Button';
+import { Github, Linkedin, Mail, ArrowRight, Zap } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const words = "Automatizando el Futuro con IA".split(" ");
+  const words = ['Automatizando', 'el Futuro', 'con IA'];
 
-  // Explicitly typing as Variants to avoid inferred string types causing errors in motion props
-  const containerVariants: Variants = {
+  const container: Variants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
   };
-
-  // Explicitly typing as Variants to fix 'string' not assignable to 'Easing' error for 'easeOut'
-  const wordVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.5, ease: 'easeOut' } 
-    },
+  const item: Variants = {
+    hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+    visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] } },
   };
 
   return (
-    <section id="hero" className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20 px-4">
-      {/* Animated Background Orbs */}
-      <div className="absolute top-1/4 -left-20 w-[400px] h-[400px] bg-purple-600/20 rounded-full orb-blur animate-orb" />
-      <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-blue-500/20 rounded-full orb-blur animate-orb [animation-delay:2s]" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full orb-blur pointer-events-none" />
-      
-      <motion.div 
-        className="container max-w-5xl mx-auto text-center z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div variants={wordVariants} className="flex justify-center mb-6">
-          <span className="glass px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] text-purple-500 dark:text-purple-400 flex items-center gap-2">
-            <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-            Full Stack Developer & AI Enthusiast
-          </span>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-24">
+
+      {/* Orbs */}
+      <div className="orb" style={{ width: 600, height: 600, top: '10%', left: '-15%', background: 'radial-gradient(circle, rgba(99,102,241,0.28) 0%, transparent 70%)', animation: 'orb 18s ease-in-out infinite' }} />
+      <div className="orb" style={{ width: 500, height: 500, bottom: '10%', right: '-10%', background: 'radial-gradient(circle, rgba(217,70,239,0.22) 0%, transparent 70%)', animation: 'orb 22s ease-in-out infinite reverse' }} />
+      <div className="orb" style={{ width: 300, height: 300, top: '40%', right: '30%', background: 'radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 70%)', animation: 'orb 15s ease-in-out 4s infinite' }} />
+
+      {/* Big decorative number */}
+      <span className="hero-num">01</span>
+
+      <div className="container max-w-5xl mx-auto z-10 relative">
+        <motion.div variants={container} initial="hidden" animate="visible">
+
+          {/* Status badge */}
+          <motion.div variants={item} style={{ marginBottom: 32 }}>
+            <span className="badge">
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#4ade80', display: 'inline-block', boxShadow: '0 0 8px #4ade80', animation: 'pulse 2s infinite' }} />
+              Full Stack Developer · AI Enthusiast
+              <Zap size={12} style={{ color: '#d946ef' }} />
+            </span>
+          </motion.div>
+
+          {/* Main heading */}
+          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, lineHeight: 0.9, marginBottom: 32, letterSpacing: '-0.03em' }}>
+            {words.map((w, i) => (
+              <motion.span
+                key={i}
+                variants={item}
+                className={i === 2 ? 'grad-text' : ''}
+                style={{
+                  display: 'block',
+                  fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+                  color: i === 2 ? undefined : '#f1f5f9',
+                  marginBottom: 4,
+                }}
+              >
+                {w}
+              </motion.span>
+            ))}
+          </h1>
+
+          {/* Subtext */}
+          <motion.p
+            variants={item}
+            style={{ color: '#64748b', fontSize: '1.1rem', maxWidth: 540, marginBottom: 48, lineHeight: 1.75, fontWeight: 300 }}
+          >
+            Creando herramientas inteligentes para simplificar problemas complejos.
+            Especializado en el desarrollo de agentes de IA y automatización de procesos.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div variants={item} style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 56 }}>
+            <button className="btn-primary" onClick={() => document.getElementById('web-projects')?.scrollIntoView({ behavior: 'smooth' })}>
+              Explorar Proyectos
+              <ArrowRight size={18} />
+            </button>
+            <button className="btn-ghost" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              Contactar
+            </button>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div variants={item} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {[
+              { Icon: Github,   href: 'https://github.com/Bitxogm', label: 'GitHub' },
+              { Icon: Linkedin, href: 'https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/', label: 'LinkedIn' },
+              { Icon: Mail,     href: 'mailto:vmmoreno1999@gmail.com', label: 'Email' },
+            ].map(({ Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '10px 18px',
+                  borderRadius: 12,
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  color: '#64748b',
+                  textDecoration: 'none',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  transition: 'all 0.2s',
+                  fontFamily: 'Outfit, sans-serif',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.color = '#818cf8';
+                  el.style.borderColor = 'rgba(99,102,241,0.4)';
+                  el.style.background = 'rgba(99,102,241,0.08)';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLElement;
+                  el.style.color = '#64748b';
+                  el.style.borderColor = 'rgba(255,255,255,0.06)';
+                  el.style.background = 'transparent';
+                }}
+              >
+                <Icon size={16} />
+                {label}
+              </a>
+            ))}
+          </motion.div>
+
         </motion.div>
+      </div>
 
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.9] text-slate-900 dark:text-white">
-          {words.map((word, i) => (
-            <motion.span 
-              key={i} 
-              variants={wordVariants} 
-              className={i === 2 ? "text-gradient block" : "inline-block mr-4"}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
-
-        <motion.p 
-          variants={wordVariants}
-          className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light"
-        >
-          Creando herramientas inteligentes para simplificar problemas complejos. Especializado en el desarrollo de agentes de IA y automatización de procesos.
-        </motion.p>
-
-        <motion.div variants={wordVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Button variant="gradient" size="lg" className="group h-16 px-10 rounded-2xl" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-            Explorar Proyectos
-            <Rocket className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </Button>
-          <Button variant="outline" size="lg" className="group h-16 px-10 rounded-2xl border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-900 dark:text-white" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-            Contactar
-            <Code2 className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-          </Button>
-        </motion.div>
-
-        <motion.div variants={wordVariants} className="flex items-center justify-center gap-8">
-          {[
-            { Icon: Github, href: "https://github.com/Bitxogm" },
-            { Icon: Linkedin, href: "https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/" },
-            { Icon: Mail, href: "mailto:vmmoreno1999@gmail.com" }
-          ].map(({ Icon, href }, i) => (
-            <a 
-              key={i} 
-              href={href} 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative p-4 text-slate-500 hover:text-purple-600 dark:hover:text-white transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-slate-100 dark:bg-white/5 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-300" />
-              <Icon className="w-7 h-7 relative z-10" />
-            </a>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
+      {/* Scroll indicator */}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 2.5 }}
+        style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}
       >
-        <div className="w-px h-24 bg-gradient-to-b from-purple-500 to-transparent relative">
-           <motion.div 
-             animate={{ top: ["0%", "100%", "0%"] }}
-             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-             className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-purple-500 dark:bg-white rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)] dark:shadow-[0_0_10px_white]"
-           />
+        <span style={{ fontFamily: 'Outfit', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#334155' }}>scroll</span>
+        <div style={{ width: 1, height: 60, background: 'linear-gradient(to bottom, #6366f1, transparent)', position: 'relative', overflow: 'hidden' }}>
+          <motion.div
+            animate={{ top: ['0%', '100%', '0%'] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+            style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: 5, height: 5, borderRadius: '50%', background: '#818cf8', boxShadow: '0 0 8px #6366f1' }}
+          />
         </div>
       </motion.div>
     </section>
