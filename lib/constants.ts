@@ -24,7 +24,7 @@ export const featuredProjects = [
     name: 'AI CV Generator',
     description: 'Herramienta para crear currículums profesionales optimizados para sistemas ATS utilizando inteligencia artificial.',
     tech: ['React', 'TypeScript', 'Framer Motion', 'PDF-Lib'],
-    url: 'https://cvgenerator.bitxodev.com/',
+    url: 'https://talent.bitxodev.com/',
     gradient: 'from-orange-500 to-rose-500',
   }
 ];
