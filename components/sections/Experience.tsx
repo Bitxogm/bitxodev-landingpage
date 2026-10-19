@@ -1,73 +1,84 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { experiences } from '../../lib/constants';
 import { Briefcase } from 'lucide-react';
+import { experiences } from '../../lib/constants';
 
 const Experience: React.FC = () => (
-  <section id="experience" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '80px 16px', position: 'relative', overflow: 'hidden' }}>
-    <div className="orb" style={{ width: 400, height: 400, top: '20%', right: '0%', background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)' }} />
+  <section
+    id="experience"
+    className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden"
+  >
+    <div
+      className="orb w-[420px] h-[420px] top-[20%] right-0"
+      style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)' }}
+    />
 
-    <div style={{ maxWidth: 860, margin: '0 auto', width: '100%' }}>
+    <div className="max-w-4xl mx-auto w-full relative z-10">
       {/* Header */}
-      <div style={{ marginBottom: 72 }}>
-        <p className="sec-label" style={{ marginBottom: 16 }}>Carrera profesional</p>
-        <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 'clamp(2.8rem, 7vw, 5rem)', letterSpacing: '-0.03em', color: '#f1f5f9', lineHeight: 1 }}>
+      <div className="mb-14">
+        <p className="sec-label mb-3">Carrera profesional</p>
+        <h2 className="display font-black text-4xl sm:text-6xl tracking-tight text-theme leading-none">
           Mi <span className="grad-text">Trayectoria.</span>
         </h2>
-        <p style={{ color: '#475569', marginTop: 20, maxWidth: 480, lineHeight: 1.7, fontWeight: 300 }}>
-          Experiencia profesional construyendo productos digitales de principio a fin.
+        <p className="text-theme-secondary mt-4 max-w-lg leading-relaxed">
+          Evolución continua construyendo y desplegando aplicaciones reales de extremo a extremo.
         </p>
       </div>
 
       {/* Timeline */}
-      <div style={{ position: 'relative', paddingLeft: 48 }}>
+      <div className="relative pl-10 sm:pl-12">
         <div className="tl-line" />
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        <div className="flex flex-col gap-6">
           {experiences.map((exp, idx) => (
             <motion.div
-              key={idx}
+              key={exp.company}
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.15, duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-              style={{ position: 'relative' }}
+              transition={{ delay: idx * 0.12, duration: 0.55 }}
+              className="relative"
             >
-              {/* Dot */}
-              <div className={`tl-dot ${idx === 0 ? 'active' : ''}`} style={{ position: 'absolute', left: -36, top: 28 }} />
+              <div
+                className={`tl-dot ${idx === 0 ? 'active' : ''}`}
+                style={{ position: 'absolute', left: -36, top: 28 }}
+              />
 
-              {/* Card */}
               <motion.div
                 whileHover={{ x: 6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                className="exp-card"
+                className="exp-card relative"
               >
-                {/* Top bar accent */}
                 {idx === 0 && (
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #6366f1, #d946ef)', borderRadius: '24px 24px 0 0' }} />
+                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500 to-fuchsia-500 rounded-t-3xl" />
                 )}
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', padding: '5px 14px', borderRadius: 99 }}>
-                    <Briefcase size={12} color="#818cf8" />
-                    <span style={{ fontFamily: 'Outfit', fontSize: '0.65rem', fontWeight: 700, color: '#818cf8', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{exp.period}</span>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <div className="flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 px-3.5 py-1 rounded-full">
+                    <Briefcase size={12} className="text-indigo-400" />
+                    <span className="display text-[11px] font-bold text-indigo-400 tracking-wider uppercase">
+                      {exp.period}
+                    </span>
                   </div>
                   {idx === 0 && (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.65rem', fontFamily: 'Outfit', fontWeight: 700, color: '#4ade80', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                      <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', animation: 'pulse 2s infinite' }} />
-                      Más reciente
+                    <span className="flex items-center gap-1.5 text-[11px] display font-bold text-emerald-500 tracking-wider uppercase">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Actual
                     </span>
                   )}
                 </div>
 
-                <h3 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.5rem', color: '#f1f5f9', marginBottom: 4 }}>{exp.role}</h3>
-                <p style={{ color: '#6366f1', fontWeight: 600, fontSize: '0.875rem', marginBottom: 16 }}>{exp.company}</p>
-                <p style={{ color: '#475569', fontSize: '0.875rem', lineHeight: 1.7, marginBottom: 24 }}>{exp.description}</p>
+                <h3 className="display font-extrabold text-xl sm:text-2xl text-theme mb-1">
+                  {exp.role}
+                </h3>
+                <p className="text-indigo-400 font-semibold text-sm mb-3">{exp.company}</p>
+                <p className="text-theme-secondary text-sm leading-relaxed mb-5">
+                  {exp.description}
+                </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {exp.skills.map(s => (
-                    <span key={s} style={{ padding: '5px 14px', borderRadius: 99, fontSize: '0.7rem', fontFamily: 'Outfit', fontWeight: 700, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', color: '#a5b4fc' }}>
+                <div className="flex flex-wrap gap-2">
+                  {exp.skills.map((s) => (
+                    <span key={s} className="tech-pill">
                       {s}
                     </span>
                   ))}
