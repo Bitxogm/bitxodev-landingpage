@@ -1,76 +1,92 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MessageSquare, ArrowRight, Github, Twitter, Linkedin } from 'lucide-react';
-import Button from '../ui/Button';
+import { Mail, Github, Linkedin, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  return (
-    <section id="contact" className="py-24 px-4 relative overflow-hidden">
-      <div className="container max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="glass rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden border-slate-200 dark:border-white/5"
-        >
-          {/* Subtle background glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-purple-600/10 blur-[100px] pointer-events-none" />
+  const socials = [
+    { href: 'https://github.com/Bitxogm', icon: Github, label: 'GitHub' },
+    {
+      href: 'https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/',
+      icon: Linkedin,
+      label: 'LinkedIn',
+    },
+    { href: 'mailto:vmmoreno1999@gmail.com', icon: Mail, label: 'Email' },
+  ];
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
-            Ready to build <br />
-            <span className="text-gradient">something epic?</span>
+  return (
+    <section
+      id="contact"
+      className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden"
+    >
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[450px] bg-indigo-600/10 blur-[130px] pointer-events-none" />
+
+      <div className="container max-w-4xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 36, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="glass-card rounded-[3rem] p-10 md:p-16 text-center relative overflow-hidden card-glow"
+        >
+          <p className="section-label text-indigo-400 mb-5">Contacto Profesional</p>
+
+          <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight text-theme leading-tight">
+            ¿Construimos algo <br />
+            <span className="grad-text">increíble juntos?</span>
           </h2>
-          
-          <p className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-xl mx-auto mb-10">
-            Currently accepting freelance projects and interesting full-time opportunities.
+
+          <p className="text-theme-secondary text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+            Disponible para oportunidades Full-Stack / Mobile / IA y proyectos donde aportar valor desde el primer día.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
-            <a href="mailto:vmmoreno1999@gmail.com" className="w-full sm:w-auto">
-              <Button variant="gradient" size="lg" className="w-full">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <a href="mailto:vmmoreno1999@gmail.com" className="w-full sm:w-auto no-underline">
+              <button type="button" className="btn-primary w-full justify-center">
                 <Mail className="w-5 h-5" />
-                Send an Email
-              </Button>
+                Enviar Email (vmmoreno1999@gmail.com)
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </a>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto border-slate-200 dark:border-white/10 text-slate-900 dark:text-white">
-              <MessageSquare className="w-5 h-5" />
-              Book a Call
-            </Button>
+            <a
+              href="https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto no-underline"
+            >
+              <button type="button" className="btn-ghost w-full justify-center">
+                <Linkedin className="w-5 h-5 text-indigo-400" />
+                Conectar en LinkedIn
+              </button>
+            </a>
           </div>
 
-          <div className="flex items-center justify-center gap-8">
-            <SocialLink href="https://github.com/Bitxogm" icon={<Github />} label="GitHub" />
-            <SocialLink href="https://www.linkedin.com/in/victor-manuel-gonzalez-moreno/" icon={<Linkedin />} label="LinkedIn" />
-            <SocialLink href="mailto:vmmoreno1999@gmail.com" icon={<Mail />} label="Email" />
+          {/* Social Icons */}
+          <div className="flex items-center justify-center gap-6">
+            {socials.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="group flex flex-col items-center gap-2 text-theme-secondary hover:text-indigo-400 transition-all duration-300 no-underline"
+              >
+                <div className="p-3.5 glass rounded-2xl group-hover:border-indigo-500/50 group-hover:scale-110 transition-all duration-300">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-semibold">{label}</span>
+              </a>
+            ))}
           </div>
         </motion.div>
-      </div>
 
-      {/* Footer inside the section to avoid snap issues */}
-      <footer className="absolute bottom-8 left-0 right-0 text-center text-slate-500 text-xs opacity-50">
-        <p>© {new Date().getFullYear()} BitxoDev. Crafted with precision.</p>
-      </footer>
+        <footer className="mt-12 text-center text-theme-muted text-xs">
+          <p>© {new Date().getFullYear()} BitxoDev — Victor Manuel Gonzalez Moreno.</p>
+        </footer>
+      </div>
     </section>
   );
 };
-
-const SocialLink: React.FC<{ href: string, icon: React.ReactNode, label: string }> = ({ href, icon, label }) => (
-  <a 
-    href={href} 
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    className="group flex flex-col items-center gap-2 text-slate-500 hover:text-white transition-all duration-300"
-  >
-    <div className="p-3 glass rounded-2xl group-hover:border-purple-500/50 group-hover:scale-110 transition-all">
-      {/* Fixed cloneElement error by casting icon to ReactElement<any> to allow injecting className */}
-      {React.cloneElement(icon as React.ReactElement<any>, { className: "w-6 h-6" })}
-    </div>
-    <span className="text-xs font-medium opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
-      {label}
-    </span>
-  </a>
-);
 
 export default Contact;

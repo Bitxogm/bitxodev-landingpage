@@ -1,51 +1,96 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { skillCategories } from '../../lib/constants';
-import Badge from '../ui/Badge';
 
-const Skills: React.FC = () => {
-  return (
-    <section id="skills" className="py-24 px-4 relative overflow-hidden">
-      <div className="container max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white">Technical Arsenal</h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto rounded-full" />
-        </div>
+const catConfig: Record<string, { tagClass: string; color: string; dot: string; num: string }> = {
+  'Frontend & Mobile':   { tagClass: 'tag-indigo',  color: '#818cf8', dot: '#6366f1', num: '01' },
+  'Backend & Telefonía': { tagClass: 'tag-cyan',    color: '#22d3ee', dot: '#06b6d4', num: '02' },
+  'IA & Ciberseguridad': { tagClass: 'tag-emerald', color: '#34d399', dot: '#10b981', num: '03' },
+  'Infra & Herramientas':{ tagClass: 'tag-fuchsia', color: '#e879f9', dot: '#d946ef', num: '04' },
+};
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
-          {skillCategories.map((category, idx) => (
-            <motion.div 
-              key={category.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+const marqueeItems = [
+  'React', '·', 'Next.js', '·', 'React Native', '·', 'TypeScript', '·',
+  'Gemini AI', '·', 'Asterisk SIP', '·', 'Python', '·', 'Docker', '·', 'Cybersecurity', '·',
+];
+
+const Skills: React.FC = () => (
+  <section
+    id="skills"
+    className="min-h-screen flex flex-col justify-center py-24 px-4 relative overflow-hidden"
+  >
+    {/* Top Marquee Strip */}
+    <div className="overflow-hidden absolute top-0 left-0 right-0 h-12 flex items-center border-b border-indigo-500/10">
+      <div className="marquee-track">
+        {[...marqueeItems, ...marqueeItems].map((t, i) => (
+          <span key={i} className={`marquee-item ${t === '·' ? 'marquee-accent' : ''}`}>
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div className="max-w-6xl mx-auto w-full relative z-10 pt-6">
+      <div className="mb-12">
+        <p className="sec-label mb-3">Stack tecnológico</p>
+        <h2 className="display font-black text-4xl sm:text-6xl tracking-tight text-theme leading-none">
+          Technical <span className="grad-text">Arsenal.</span>
+        </h2>
+      </div>
+
+      {/* 2x2 Equal-Height Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
+        {skillCategories.map((cat, idx) => {
+          const cfg = catConfig[cat.title] ?? {
+            tagClass: 'tag-indigo',
+            color: '#818cf8',
+            dot: '#6366f1',
+            num: `0${idx + 1}`,
+          };
+          return (
+            <motion.div
+              key={cat.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-4"
+              transition={{ delay: idx * 0.1, duration: 0.55 }}
+              className="glass-card rounded-3xl p-8 relative overflow-hidden card-glow h-full flex flex-col justify-between"
             >
-              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-3">
-                <span className="w-8 h-px bg-slate-200 dark:bg-white/20" />
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, sIdx) => (
-                  <motion.div
-                    key={skill}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              <span
+                className="absolute top-4 right-5 display font-black text-6xl pointer-events-none select-none"
+                style={{ color: 'transparent', WebkitTextStroke: `1px ${cfg.dot}28` }}
+              >
+                {cfg.num}
+              </span>
+
+              <div>
+                <div className="flex items-center gap-2.5 mb-6">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ background: cfg.dot, boxShadow: `0 0 12px ${cfg.dot}` }}
+                  />
+                  <span
+                    className="display font-extrabold text-xs uppercase tracking-[0.22em]"
+                    style={{ color: cfg.color }}
                   >
-                    <Badge variant="outline" className="px-5 py-2 text-sm border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:border-purple-500/50 hover:bg-purple-500/5 cursor-default">
+                    {cat.title}
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2.5">
+                  {cat.skills.map((skill) => (
+                    <span key={skill} className={`skill-tag ${cfg.tagClass}`}>
                       {skill}
-                    </Badge>
-                  </motion.div>
-                ))}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Skills;

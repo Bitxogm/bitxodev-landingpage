@@ -1,0 +1,69 @@
+name: Deploy Landing to VPS
+
+on:
+  push:
+    branches:
+      - main
+      - feat/mobile-pdf-carousels
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.LANDING_SSH_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT || '2222' }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$VPS_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Verify SSH Connection (Dry-Run on Branch)
+        if: github.ref != 'refs/heads/main'
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT || '2222' }}
+        run: |
+          SSH_USER=$(printf '%s' "$VPS_USER" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')
+          ssh -i ~/.ssh/deploy_key \
+              -p "$VPS_PORT" \
+              -o StrictHostKeyChecking=accept-new \
+              -o BatchMode=yes \
+              -o ConnectTimeout=15 \
+              "${SSH_USER}@${VPS_HOST}" << 'EOF'
+            set -e
+            echo "✅ Conexión SSH con Hetzner VPS exitosa como $(whoami)"
+            cd ~/proyectos/landing-new
+            echo "✅ Directorio encontrado: $(pwd)"
+            docker compose ps
+            echo "✅ Prueba finalizada sin tocar producción"
+          EOF
+
+      - name: Deploy on Hetzner VPS (Production)
+        if: github.ref == 'refs/heads/main'
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT || '2222' }}
+        run: |
+          SSH_USER=$(printf '%s' "$VPS_USER" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')
+          ssh -i ~/.ssh/deploy_key \
+              -p "$VPS_PORT" \
+              -o StrictHostKeyChecking=accept-new \
+              -o BatchMode=yes \
+              -o ConnectTimeout=15 \
+              "${SSH_USER}@${VPS_HOST}" << 'EOF'
+            set -e
+            cd ~/proyectos/landing-new
+            git fetch origin main
+            git reset --hard origin/main
+            docker compose up -d --build --remove-orphans
+            docker image prune -f
+          EOF

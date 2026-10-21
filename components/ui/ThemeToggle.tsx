@@ -1,31 +1,24 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 
-const ThemeToggle: React.FC = () => {
-  const [isDark, setIsDark] = useState(true);
+interface ThemeToggleProps {
+  isDark: boolean;
+  onToggle: () => void;
+}
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      root.classList.remove('light');
-    } else {
-      root.classList.add('light');
-      root.classList.remove('dark');
-    }
-  }, [isDark]);
-
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, onToggle }) => {
   return (
     <button
-      onClick={() => setIsDark(!isDark)}
-      className="p-2 rounded-full glass hover:bg-white/10 transition-all duration-300 group"
-      aria-label="Toggle theme"
+      type="button"
+      onClick={onToggle}
+      title={isDark ? 'Cambiar a modo Día' : 'Cambiar a modo Noche'}
+      aria-label="Alternar modo día y noche"
+      className="flex items-center justify-center w-9 h-9 rounded-xl glass hover:border-indigo-500/50 transition-all duration-300 cursor-pointer group"
     >
       {isDark ? (
-        <Sun className="w-5 h-5 text-yellow-400 group-hover:rotate-45 transition-transform duration-500" />
+        <Sun className="w-4 h-4 text-amber-400 group-hover:rotate-45 transition-transform duration-500" />
       ) : (
-        <Moon className="w-5 h-5 text-blue-600 group-hover:-rotate-12 transition-transform duration-500" />
+        <Moon className="w-4 h-4 text-indigo-600 group-hover:-rotate-12 transition-transform duration-500" />
       )}
     </button>
   );

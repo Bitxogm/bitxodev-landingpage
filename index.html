@@ -3,147 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitxoDev | Victor Manuel - Full-Stack Developer</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23a855f7;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%233b82f6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23grad)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='800' font-size='55'%3EB%3C/text%3E%3C/svg%3E">
-    
+    <title>BitxoDev | Victor Manuel — Full-Stack Developer & AI Builder</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23d946ef;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23grad)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='800' font-size='55'%3EB%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        slate: { 950: '#020617' },
-                        purple: { 600: '#9333ea' },
-                        blue: { 500: '#3b82f6' }
-                    },
                     animation: {
-                        'gradient': 'gradient 8s linear infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'orb': 'orb 15s ease-in-out infinite',
+                        'orb': 'orb 18s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 10s linear infinite',
+                        'slide-right': 'slide-right 20s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
                     },
                     keyframes: {
-                        gradient: {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
-                        },
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
+                            '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         orb: {
-                            '0%, 100%': { transform: 'scale(1) translate(0, 0)' },
-                            '33%': { transform: 'scale(1.3) translate(50px, -70px)' },
-                            '66%': { transform: 'scale(0.7) translate(-40px, 40px)' },
+                            '0%, 100%': { transform: 'scale(1) translate(0,0)' },
+                            '33%': { transform: 'scale(1.3) translate(60px,-70px)' },
+                            '66%': { transform: 'scale(0.8) translate(-50px,40px)' },
+                        },
+                        'slide-right': {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0%)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
             }
         }
     </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        :root {
-            --bg: #020617;
-            --text: #f8fafc;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-        }
-
-        .light {
-            --bg: #f8fafc;
-            --text: #0f172a;
-            --glass-bg: rgba(15, 23, 42, 0.03);
-            --glass-border: rgba(15, 23, 42, 0.08);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            margin: 0;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            height: 100%;
-        }
-
-        /* Snap Scroll */
-        html { 
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            scroll-padding-top: 80px; /* Account for fixed Navbar */
-            height: 100%;
-        }
-
-        section {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            z-index: 9999;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #a855f7, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .orb-blur {
-            filter: blur(100px);
-            opacity: 0.3;
-        }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
-    </style>
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom": "https://esm.sh/react-dom@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react/jsx-runtime": "https://esm.sh/react@18.2.0/jsx-runtime",
-    "framer-motion": "https://esm.sh/framer-motion@11.0.3?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react,react-dom",
-    "tailwind-merge": "https://esm.sh/tailwind-merge@2.2.1",
-    "clsx": "https://esm.sh/clsx@2.1.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-slate-950">
+<body class="bg-grid">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
