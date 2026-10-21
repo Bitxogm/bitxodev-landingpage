@@ -31,14 +31,15 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_PORT: ${{ secrets.VPS_PORT || '2222' }}
         run: |
-          ssh -v -i ~/.ssh/deploy_key \
+          SSH_USER=$(printf '%s' "$VPS_USER" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')
+          ssh -i ~/.ssh/deploy_key \
               -p "$VPS_PORT" \
               -o StrictHostKeyChecking=accept-new \
               -o BatchMode=yes \
               -o ConnectTimeout=15 \
-              "${VPS_USER}@${VPS_HOST}" << 'EOF'
+              "${SSH_USER}@${VPS_HOST}" << 'EOF'
             set -e
-            echo "✅ Conexión SSH con Hetzner VPS exitosa"
+            echo "✅ Conexión SSH con Hetzner VPS exitosa como $(whoami)"
             cd ~/proyectos/landing-new
             echo "✅ Directorio encontrado: $(pwd)"
             docker compose ps
@@ -52,12 +53,13 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_PORT: ${{ secrets.VPS_PORT || '2222' }}
         run: |
+          SSH_USER=$(printf '%s' "$VPS_USER" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')
           ssh -i ~/.ssh/deploy_key \
               -p "$VPS_PORT" \
               -o StrictHostKeyChecking=accept-new \
               -o BatchMode=yes \
               -o ConnectTimeout=15 \
-              "${VPS_USER}@${VPS_HOST}" << 'EOF'
+              "${SSH_USER}@${VPS_HOST}" << 'EOF'
             set -e
             cd ~/proyectos/landing-new
             git fetch origin main
