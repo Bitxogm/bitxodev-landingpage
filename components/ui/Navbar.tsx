@@ -21,7 +21,7 @@ const navLinks = [
   { code: '01', name: 'Inicio',      href: '#hero',              id: 'hero' },
   { code: '02', name: 'Sobre_mí',    href: '#about',             id: 'about' },
   { code: '03', name: 'Web_Apps',    href: '#web-projects',      id: 'web-projects' },
-  { code: '04', name: 'Mobile_Apps', href: '#mobile-projects',   id: 'mobile-projects' },
+  { code: '04', name: 'Mobile',      href: '#mobile-projects',   id: 'mobile-projects' },
   { code: '05', name: 'Labs_Repo',   href: '#bootcamp-projects', id: 'bootcamp-projects' },
   { code: '06', name: 'Trayectoria', href: '#experience',        id: 'experience' },
   { code: '07', name: 'Skills',      href: '#skills',            id: 'skills' },
@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div
-        className={`max-w-7xl w-full mx-auto relative rounded-2xl glass-card overflow-hidden transition-all duration-500 ${
+        className={`max-w-[1380px] w-full mx-auto relative rounded-2xl glass-card overflow-hidden transition-all duration-500 ${
           scrolled
             ? 'border-indigo-500/50 shadow-[0_14px_50px_rgba(99,102,241,0.24)]'
             : 'border-indigo-500/35 shadow-[0_10px_40px_rgba(99,102,241,0.16)]'
@@ -162,50 +162,50 @@ const Navbar: React.FC<NavbarProps> = ({
         <div className="pointer-events-none absolute inset-x-10 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-indigo-400/80 to-transparent" />
 
         {/* Upper Bar: Logo + Links + Controls */}
-        <div className="flex items-center justify-between gap-2 px-3.5 sm:px-6 py-2.5 sm:py-3">
+        <div className="flex items-center justify-between gap-2 px-3 sm:px-5 py-2.5">
           {/* Logo (visible on all screen sizes) */}
           <a
             href="#hero"
             onClick={(e) => scrollToSection(e, '#hero')}
-            className="flex items-center gap-2.5 sm:gap-3 group no-underline flex-shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 group no-underline flex-shrink-0"
           >
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center font-black text-white text-base sm:text-lg transition-transform duration-300 group-hover:scale-110 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500 shadow-[0_0_20px_rgba(99,102,241,0.45)] border border-white/20 display">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-black text-white text-base transition-transform duration-300 group-hover:scale-110 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500 shadow-[0_0_20px_rgba(99,102,241,0.45)] border border-white/20 display">
               B
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-bold text-xl sm:text-2xl text-theme display tracking-tight">
+              <span className="font-bold text-lg sm:text-xl text-theme display tracking-tight">
                 Bitxo<span className="grad-text-2">Dev</span>
               </span>
-              <span className="font-hacker text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-400 mt-0.5">
+              <span className="font-hacker text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.14em] text-indigo-400 mt-0.5">
                 &gt; AI_WEB_SEC
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden xl:flex items-center gap-1 px-2 py-1 rounded-xl bg-indigo-500/[0.06] border border-indigo-500/20">
+          <div className="hidden xl:flex items-center gap-0.5 px-1.5 py-1 rounded-xl bg-indigo-500/[0.06] border border-indigo-500/20">
             {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
                 onClick={(e) => scrollToSection(e, link.href)}
-                className={`nav-link no-underline flex items-center gap-1 ${
+                className={`nav-link no-underline flex items-center gap-0.5 ${
                   active === link.id ? 'active' : ''
                 }`}
               >
-                <span className="text-[10px] text-indigo-400/80 font-extrabold">{link.code}.</span>
+                <span className="text-[9px] text-indigo-400/80 font-extrabold">{link.code}.</span>
                 <span>{link.name}</span>
               </a>
             ))}
           </div>
 
-          {/* Actions: Matrix Toggle + Theme Toggle + GitHub */}
-          <div className="hidden md:flex items-center gap-2.5 flex-shrink-0">
+          {/* Right Controls: Matrix + Day/Night + GitHub + Burger Menu */}
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <button
               type="button"
               onClick={onToggleMatrix}
               title="Cambiar efecto Matrix (Verde / Cyber / Off)"
-              className={`font-hacker flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer border ${
+              className={`font-hacker hidden sm:flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl text-[11px] font-bold transition-all duration-300 cursor-pointer border whitespace-nowrap ${
                 matrixMode === 'matrix'
                   ? 'border-emerald-500/55 bg-emerald-500/15 text-emerald-400 shadow-[0_0_16px_rgba(16,185,129,0.2)]'
                   : matrixMode === 'cyber'
@@ -213,7 +213,7 @@ const Navbar: React.FC<NavbarProps> = ({
                   : 'border-indigo-500/25 bg-indigo-500/5 text-theme-secondary'
               }`}
             >
-              <Terminal size={14} />
+              <Terminal size={13} />
               {matrixLabel}
             </button>
 
@@ -224,24 +224,22 @@ const Navbar: React.FC<NavbarProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="flex items-center justify-center w-10 h-10 rounded-xl glass text-theme-secondary hover:text-indigo-400 hover:border-indigo-500/50 transition-all duration-300 no-underline"
+              className="hidden md:flex items-center justify-center w-9 h-9 rounded-xl glass text-theme-secondary hover:text-indigo-400 hover:border-indigo-500/50 transition-all duration-300 no-underline flex-shrink-0"
             >
-              <Github size={18} />
+              <Github size={17} />
             </a>
-          </div>
 
-          {/* Mobile / Tablet controls + Prominent Burger Menu */}
-          <div className="flex items-center gap-2 xl:hidden flex-shrink-0">
-            <div className="md:hidden">
-              <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
-            </div>
             <button
               type="button"
-              className="px-3 py-2 rounded-xl bg-indigo-500/20 border border-indigo-400/50 text-theme hover:bg-indigo-500/30 transition-all flex items-center gap-1.5 font-hacker text-xs font-bold shadow-[0_0_16px_rgba(99,102,241,0.25)] cursor-pointer"
+              className="xl:hidden px-3 py-2 rounded-xl bg-indigo-500/20 border border-indigo-400/50 text-theme hover:bg-indigo-500/30 transition-all flex items-center gap-1.5 font-hacker text-xs font-bold shadow-[0_0_16px_rgba(99,102,241,0.25)] cursor-pointer flex-shrink-0"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Abrir menú de navegación"
             >
-              {mobileOpen ? <X size={19} className="text-indigo-400" /> : <Menu size={19} className="text-indigo-400" />}
+              {mobileOpen ? (
+                <X size={18} className="text-indigo-400" />
+              ) : (
+                <Menu size={18} className="text-indigo-400" />
+              )}
               <span>{mobileOpen ? 'CERRAR' : 'MENÚ'}</span>
             </button>
           </div>
