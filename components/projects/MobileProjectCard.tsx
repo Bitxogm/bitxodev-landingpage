@@ -36,11 +36,11 @@ const MobileProjectCard: React.FC<MobileProjectCardProps> = ({
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="group relative h-full"
     >
-      <div className="glass-card rounded-[2rem] p-6 flex flex-col xl:flex-row gap-6 card-glow h-full items-stretch">
+      <div className="glass-card rounded-[2rem] p-5 sm:p-6 flex flex-col xl:flex-row gap-6 card-glow h-full items-stretch min-w-0 overflow-hidden">
         {/* Left/Top: Interactive LinkedIn Carousel Preview (4:5 Ratio) */}
         <div
           onClick={() => onOpenModal(currentSlide)}
-          className="relative w-full xl:w-[260px] flex-shrink-0 aspect-[4/5] max-h-[340px] mx-auto rounded-2xl overflow-hidden bg-[#0a0a16] border border-indigo-500/20 cursor-zoom-in flex items-center justify-center shadow-xl"
+          className="relative w-full max-w-[290px] sm:max-w-[310px] xl:w-[265px] h-[350px] sm:h-[375px] flex-shrink-0 mx-auto rounded-2xl overflow-hidden bg-[#0a0a16] border border-indigo-500/25 cursor-zoom-in flex items-center justify-center shadow-xl"
         >
           <AnimatePresence mode="wait">
             <motion.img
@@ -51,7 +51,7 @@ const MobileProjectCard: React.FC<MobileProjectCardProps> = ({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -12 }}
               transition={{ duration: 0.2 }}
-              className="w-full h-full object-contain select-none"
+              className="w-full h-full object-contain select-none p-1"
               draggable={false}
             />
           </AnimatePresence>
@@ -116,14 +116,14 @@ const MobileProjectCard: React.FC<MobileProjectCardProps> = ({
         <div className="flex-grow flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between gap-2 mb-3">
-              <span className="px-3 py-1 rounded-full text-[10px] font-black text-cyan-500 bg-cyan-500/10 uppercase tracking-widest border border-cyan-500/25">
+              <span className="font-hacker px-3 py-1 rounded-full text-xs font-bold text-cyan-500 bg-cyan-500/10 uppercase tracking-wider border border-cyan-500/25">
                 {project.type} · {project.year}
               </span>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => onOpenModal(currentSlide)}
-                  className="text-xs font-semibold text-cyan-500 hover:text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/25 px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
+                  className="font-hacker text-xs font-bold text-cyan-500 hover:text-cyan-400 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/25 px-3 py-1.5 rounded-full flex items-center gap-1.5 transition-all cursor-pointer"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
                   Ampliar
@@ -140,11 +140,11 @@ const MobileProjectCard: React.FC<MobileProjectCardProps> = ({
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold mb-1.5 tracking-tight text-theme group-hover:text-cyan-500 transition-colors">
+            <h3 className="display text-2xl sm:text-3xl font-bold mb-1.5 tracking-tight text-theme group-hover:text-cyan-500 transition-colors">
               {project.name}
             </h3>
-            <p className="text-xs font-semibold text-indigo-400 mb-3">{project.subtitle}</p>
-            <p className="text-theme-secondary text-sm leading-relaxed mb-5">
+            <p className="font-hacker text-xs font-bold text-indigo-400 mb-3">{project.subtitle}</p>
+            <p className="text-theme-secondary text-base leading-relaxed mb-5">
               {project.description}
             </p>
           </div>
@@ -153,7 +153,7 @@ const MobileProjectCard: React.FC<MobileProjectCardProps> = ({
             {project.tech.map((t) => (
               <span
                 key={t}
-                className="text-[10px] font-bold text-cyan-500 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/25"
+                className="font-hacker text-xs font-bold text-cyan-500 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/25"
               >
                 {t}
               </span>

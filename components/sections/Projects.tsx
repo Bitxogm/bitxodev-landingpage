@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
   } | null>(null);
 
   return (
-    <div id="projects" className="relative">
+    <div id="projects" className="relative overflow-hidden">
       <div className="orb w-[900px] h-[550px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-violet-500/5" />
 
       <div className="container max-w-7xl mx-auto relative z-10 px-4">
@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
             <h4 className="section-label text-theme-muted">Web Ecosystem</h4>
             <div className="h-px flex-1 bg-gradient-to-r from-indigo-500/30 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:auto-rows-fr">
             {featuredProjects.map((project, idx) => (
               <ProjectCard key={project.id} project={project} index={idx} />
             ))}
@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
         </section>
 
         {/* 2. Mobile Projects & LinkedIn PDF Carousels */}
-        <section id="mobile-projects" className="min-h-screen py-24 flex flex-col justify-center">
+        <section id="mobile-projects" className="min-h-screen py-20 lg:py-24 flex flex-col justify-center">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
               <p className="section-label text-cyan-500 mb-2">Android · IA · Seguridad</p>
@@ -60,12 +60,12 @@ const Projects: React.FC = () => {
                 Mobile <span className="grad-text">Ecosystem.</span>
               </h3>
             </div>
-            <p className="text-xs text-theme-secondary max-w-sm">
+            <p className="text-sm text-theme-secondary max-w-sm">
               Desliza cada presentación técnica o pulsa en <strong className="text-cyan-400">Ampliar</strong> para ver el carrusel completo en alta resolución.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 auto-rows-fr">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:auto-rows-fr">
             {mobileProjects.map((project, idx) => (
               <MobileProjectCard
                 key={project.id}
@@ -80,12 +80,12 @@ const Projects: React.FC = () => {
         </section>
 
         {/* 3. Bootcamp Labs & Repository Archive */}
-        <section id="bootcamp-projects" className="min-h-screen py-24 flex flex-col justify-center">
+        <section id="bootcamp-projects" className="min-h-screen py-20 lg:py-24 flex flex-col justify-center">
           <div className="flex items-center gap-4 mb-8">
             <h4 className="section-label text-emerald-500">Proyectos Destacados & Labs</h4>
             <div className="h-px flex-1 bg-gradient-to-r from-emerald-500/30 to-transparent" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-fr">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:auto-rows-fr">
             {bootcampPractices.map((practice, idx) => (
               <BootcampCard key={practice.name} practice={practice} index={idx} />
             ))}

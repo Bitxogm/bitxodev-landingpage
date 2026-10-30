@@ -43,7 +43,7 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({ project, index }) => {
                 <Globe className="w-4 h-4" />
               )}
             </div>
-            <span className="text-[10px] font-black text-theme-muted uppercase tracking-widest">
+            <span className="font-hacker text-xs font-bold text-theme-muted uppercase tracking-wider">
               {project.type} · {project.year}
             </span>
           </div>
@@ -54,19 +54,19 @@ const ArchiveCard: React.FC<ArchiveCardProps> = ({ project, index }) => {
           )}
         </div>
 
-        <h4 className="font-bold text-lg mb-2 text-theme group-hover:text-indigo-400 transition-colors">
+        <h4 className="display font-bold text-xl mb-2 text-theme group-hover:text-indigo-400 transition-colors">
           {project.name}
         </h4>
-        <p className="text-xs text-theme-secondary mb-5 line-clamp-3 leading-relaxed min-h-[3.5rem]">
+        <p className="text-sm text-theme-secondary mb-5 line-clamp-3 leading-relaxed min-h-[4rem]">
           {project.description}
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-indigo-500/10">
+      <div className="flex flex-wrap gap-2 pt-3 border-t border-indigo-500/10">
         {project.tech.map((t) => (
           <span
             key={t}
-            className="text-[9px] text-theme-muted group-hover:text-indigo-400 font-bold uppercase tracking-tight transition-colors"
+            className="font-hacker text-[11px] text-theme-muted group-hover:text-indigo-400 font-bold uppercase tracking-tight transition-colors"
           >
             #{t}
           </span>

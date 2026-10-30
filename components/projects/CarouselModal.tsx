@@ -74,18 +74,18 @@ const CarouselModal: React.FC<CarouselModalProps> = ({
       {/* Main Slide */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-3xl flex-1 max-h-[75vh] flex items-center justify-center"
+        className="relative w-full max-w-3xl flex-1 min-h-0 max-h-[72vh] flex items-center justify-center"
       >
         <button
           type="button"
           onClick={() => setCurrentSlide((p) => (p - 1 + totalSlides) % totalSlides)}
-          className="absolute left-2 sm:-left-14 z-10 w-11 h-11 rounded-full bg-black/80 border border-white/15 text-white flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:scale-110 transition-all shadow-xl cursor-pointer"
+          className="absolute left-1.5 sm:-left-14 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/85 border border-white/20 text-white flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all shadow-xl cursor-pointer"
           aria-label="Anterior"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-[#070712] p-2 shadow-2xl">
+        <div className="w-full h-full flex items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#070712] p-1.5 sm:p-2 shadow-2xl">
           <AnimatePresence mode="wait">
             <motion.img
               key={currentSlide}
@@ -95,7 +95,7 @@ const CarouselModal: React.FC<CarouselModalProps> = ({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="max-w-full max-h-full object-contain rounded-xl select-none"
+              className="max-w-full max-h-[66vh] w-auto h-auto object-contain rounded-xl select-none"
               draggable={false}
             />
           </AnimatePresence>
@@ -104,26 +104,26 @@ const CarouselModal: React.FC<CarouselModalProps> = ({
         <button
           type="button"
           onClick={() => setCurrentSlide((p) => (p + 1) % totalSlides)}
-          className="absolute right-2 sm:-right-14 z-10 w-11 h-11 rounded-full bg-black/80 border border-white/15 text-white flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:scale-110 transition-all shadow-xl cursor-pointer"
+          className="absolute right-1.5 sm:-right-14 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/85 border border-white/20 text-white flex items-center justify-center hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all shadow-xl cursor-pointer"
           aria-label="Siguiente"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
 
       {/* Thumbnails */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-3xl mt-4 flex items-center justify-center gap-2 overflow-x-auto py-2 px-4"
+        className="w-full max-w-3xl mt-3 flex items-center justify-start sm:justify-center gap-2 overflow-x-auto py-2 px-2 sm:px-4"
       >
         {slides.map((slideUrl, idx) => (
           <button
             key={idx}
             type="button"
             onClick={() => setCurrentSlide(idx)}
-            className={`relative flex-shrink-0 w-11 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+            className={`relative flex-shrink-0 w-10 h-12 sm:w-11 sm:h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
               idx === currentSlide
-                ? 'border-cyan-400 scale-110 shadow-[0_0_15px_rgba(34,211,238,0.4)]'
+                ? 'border-cyan-400 scale-105 shadow-[0_0_15px_rgba(34,211,238,0.4)]'
                 : 'border-white/10 opacity-50 hover:opacity-90'
             }`}
           >

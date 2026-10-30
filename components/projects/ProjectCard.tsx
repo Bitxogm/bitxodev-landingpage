@@ -61,10 +61,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </a>
           </div>
 
-          <h3 className="text-2xl font-bold mb-3 text-theme group-hover:text-indigo-400 transition-colors duration-300 tracking-tight">
+          <h3 className="display text-2xl sm:text-3xl font-bold mb-3 text-theme group-hover:text-indigo-400 transition-colors duration-300 tracking-tight">
             {project.name}
           </h3>
-          <p className="text-theme-secondary text-sm leading-relaxed font-normal flex-grow min-h-[4.5rem]">
+          <p className="text-theme-secondary text-base leading-relaxed font-normal flex-grow min-h-[4.8rem]">
             {project.description}
           </p>
         </div>

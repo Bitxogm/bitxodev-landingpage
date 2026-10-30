@@ -109,30 +109,30 @@ const About: React.FC = () => {
               "Resolviendo problemas reales con arquitecturas limpias, agentes de IA y seguridad desde el diseño."
             </blockquote>
 
-            <p className="text-theme-secondary leading-relaxed mb-4 text-base font-normal">
+            <p className="text-theme-secondary leading-relaxed mb-4 text-lg font-normal">
               Desarrollador <strong className="text-theme font-semibold">Full-Stack & Mobile</strong> especializado en integrar{' '}
               <strong className="text-theme font-semibold">Inteligencia Artificial</strong> y{' '}
               <strong className="text-theme font-semibold">Ciberseguridad</strong> en productos listos para producción.
             </p>
-            <p className="text-theme-secondary leading-relaxed mb-8 text-base font-normal">
+            <p className="text-theme-secondary leading-relaxed mb-8 text-lg font-normal">
               Construyo desde plataformas SaaS con Next.js y TypeScript hasta aplicaciones Android nativas que filtran amenazas en milisegundos o conectan telefonía SIP/Asterisk con modelos de voz en tiempo real.
             </p>
 
             {/* Philosophy Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 pt-6 border-t border-indigo-500/15">
-              <div className="glass-card p-4 rounded-2xl">
-                <p className="display font-bold text-xs uppercase tracking-widest text-indigo-400 mb-1">
-                  Filosofía
+              <div className="glass-card p-5 rounded-2xl">
+                <p className="font-hacker font-bold text-xs uppercase tracking-widest text-indigo-400 mb-1.5">
+                  &gt; Filosofía
                 </p>
-                <p className="text-theme-secondary text-sm leading-relaxed">
+                <p className="text-theme-secondary text-base leading-relaxed">
                   Si una tarea repetitiva se puede automatizar con IA, se automatiza.
                 </p>
               </div>
-              <div className="glass-card p-4 rounded-2xl">
-                <p className="display font-bold text-xs uppercase tracking-widest text-cyan-400 mb-1">
-                  Arquitectura
+              <div className="glass-card p-5 rounded-2xl">
+                <p className="font-hacker font-bold text-xs uppercase tracking-widest text-cyan-400 mb-1.5">
+                  &gt; Arquitectura
                 </p>
-                <p className="text-theme-secondary text-sm leading-relaxed">
+                <p className="text-theme-secondary text-base leading-relaxed">
                   Código modular, privacidad local y despliegues propios en Linux VPS & Docker.
                 </p>
               </div>

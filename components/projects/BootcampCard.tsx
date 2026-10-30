@@ -47,16 +47,16 @@ const BootcampCard: React.FC<BootcampCardProps> = ({ practice, index }) => (
       </div>
 
       <div className="flex items-center gap-2 mb-2 flex-wrap">
-        <h4 className="font-bold text-lg text-theme group-hover:text-emerald-500 transition-colors">
+        <h4 className="display font-bold text-xl text-theme group-hover:text-emerald-500 transition-colors">
           {practice.name}
         </h4>
         {practice.badge && (
-          <span className="text-[9px] font-bold uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/25">
+          <span className="font-hacker text-[10px] font-bold uppercase tracking-wider text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/25">
             {practice.badge}
           </span>
         )}
       </div>
-      <p className="text-xs text-theme-secondary mb-6 leading-relaxed min-h-[3.75rem]">
+      <p className="text-sm text-theme-secondary mb-6 leading-relaxed min-h-[4.2rem]">
         {practice.description}
       </p>
     </div>
@@ -65,7 +65,7 @@ const BootcampCard: React.FC<BootcampCardProps> = ({ practice, index }) => (
       {practice.tech.map((t) => (
         <span
           key={t}
-          className="text-[9px] font-bold uppercase tracking-wider text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded-md border border-emerald-500/25"
+          className="font-hacker text-[11px] font-bold uppercase tracking-wider text-emerald-500 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/25"
         >
           {t}
         </span>
